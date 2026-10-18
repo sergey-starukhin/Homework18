@@ -142,14 +142,7 @@ int main()
     {
         cout << "Йелфы восстановили Агроному меч Кызылдура! Его атака значительно возросла!" << endl;
     
-    }
-
-    //// Сохраняем игру
-    saveGroup(party, "save01");
-    //delete[] party.heroes;
-
-    // Загружаем и продолжаем играть
-    loadGroup(party, "save01");
+    } 
 
     int index = findHeroIndex(party, "Legalize");
     int damage = party.heroes[index].stats.agility + party.heroes[index].weapon.power;
@@ -167,11 +160,16 @@ int main()
         cout << "Хит пойнты Фёдора: " << party.heroes[index].currentHp << "/" << party.heroes[index].maxHp << endl;
     }
 
-    // Сохраняем и выходим из игры
+	cout << "Общая сила героев в лагере: " << totalPartyPower(party) << endl;
+	cout << "Сильнейший герой в лагере: " << party.heroes[findStrongestHeroIndex(party)].name << endl;
+    cout << "В бою с призраком коммунизма Пендальф упал в пропасть! Группа лишилась одного героя" << endl;
+	dismissHero(party, "Pendalf");
+	cout << "Теперь группа выглядит так: " << endl;
+	printParty(party);
+
+
     saveGroup(party, "save01");
     delete[] party.heroes;
-
-
     // ЗАПОВНІТЬ ТУТ СЮЖЕТ ГРИ, ВИКОРИСТОВУЮЧИ ВСІ ФУНКЦІЇ, ЯКІ ВИ НАПИСАЛИ
 
     return 0;
